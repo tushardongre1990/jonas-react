@@ -1,0 +1,15 @@
+09:00 - 13:30 → lecture
+14:30 - 18:00 → lab
+
+19:00 - 21:00 →  apti/revision
+
+21:00 - 22:00 → dinner / timepass
+
+22:00 - 23:30 → mcq/code/ccee
+
+00:00 - 01:00 → react
+
+02:00 - 03:00 → lec revsion
+
+
+
