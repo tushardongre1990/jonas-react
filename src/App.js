@@ -103,6 +103,7 @@ const Menu = () => {
 };
 
 function Pizza(props) {
+  if (props.pizzaObj.soldOut) return null;
   return (
     <div className="pizza">
       <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
@@ -123,6 +124,13 @@ const Footer = () => {
   const isOpen = hour >= openHour && hour <= closeHour;
 
   const time = new Date().toLocaleTimeString();
+  //  this works bit footer is only rendered when isOpen is true, so use this when we have to return the whole component and not only a part of it
+  // if (!isOpen)
+  //   return (
+  //     <p>
+  //       We're happy to welcome you between {openHour}:00 and {closeHour}:00
+  //     </p>
+  //   );
   return (
     <footer className="footer">
       {isOpen ? (
