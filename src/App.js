@@ -54,7 +54,6 @@ function App() {
 }
 
 const Header = () => {
-  // const style = { color: "red", fontSize: "40px", textTransform: "uppercase" };
   const style = {};
   return (
     <header className="header">
@@ -79,38 +78,19 @@ const Menu = () => {
       ) : (
         <p>We're still working on our menu. Please come back later</p>
       )}
-      {/* {numPizzas > 0 && (
-        <ul className="pizzas">
-          {pizzaData.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
-      )} */}
-      {/* <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="pizzas/funghi.jpg"
-        price={15}
-      /> */}
     </main>
   );
 };
 
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) return null;
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return null;
   return (
     <div className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <li>
-        <h2>{props.pizzaObj.name}</h2>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h2>{pizzaObj.name}</h2>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </li>
     </div>
   );
@@ -119,16 +99,14 @@ function Pizza(props) {
 const Footer = () => {
   const hour = new Date().getHours();
 
-  const openHour = 0;
+  const openHour = 10;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-
-  const time = new Date().toLocaleTimeString();
 
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order openHour={openHour} closeHour={closeHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00
@@ -138,11 +116,12 @@ const Footer = () => {
   );
 };
 
-function Order(props) {
+function Order({ openHour, closeHour }) {
   return (
     <div>
       <p>
-        We are open until {props.closeHour}:00. Come visit us or order online
+        We are open from {openHour}:00 until {closeHour}:00. Come visit us or
+        order online
       </p>
       <button className="btn">Order</button>
     </div>
