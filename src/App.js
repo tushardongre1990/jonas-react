@@ -1,3 +1,4 @@
+import "./index.css";
 const pizzaData = [
   {
     name: "Focaccia",
@@ -90,14 +91,19 @@ const Menu = () => {
 };
 
 function Pizza({ pizzaObj }) {
-  if (pizzaObj.soldOut) return null;
+  // if (pizzaObj.soldOut) return null;
   return (
-    <div className="pizza">
+    <div className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <li>
-        <h2>{pizzaObj.name}</h2>
+        <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price}</span>
+        {/* {pizzaObj.soldOut ? (
+          <span>SOLD OUT</span>
+        ) : (
+          <span>{pizzaObj.price}</span>
+        )} */}
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
       </li>
     </div>
   );
@@ -125,7 +131,7 @@ const Footer = () => {
 
 function Order({ openHour, closeHour }) {
   return (
-    <div>
+    <div className="order">
       <p>
         We are open from {openHour}:00 until {closeHour}:00. Come visit us or
         order online
