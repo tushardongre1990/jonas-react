@@ -124,33 +124,29 @@ const Footer = () => {
   const isOpen = hour >= openHour && hour <= closeHour;
 
   const time = new Date().toLocaleTimeString();
-  //  this works bit footer is only rendered when isOpen is true, so use this when we have to return the whole component and not only a part of it
-  // if (!isOpen)
-  //   return (
-  //     <p>
-  //       We're happy to welcome you between {openHour}:00 and {closeHour}:00
-  //     </p>
-  //   );
+
   return (
     <footer className="footer">
       {isOpen ? (
-        <div>
-          <p>We are open until {closeHour}:00. Come visit us or order online</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00
         </p>
       )}
-      {/* {isOpen && (
-        <div>
-          <p>We are open until {closeHour}:00. Come visit us or order online</p>
-          <button className="btn">Order</button>
-        </div>
-      )} */}
     </footer>
   );
 };
+
+function Order(props) {
+  return (
+    <div>
+      <p>
+        We are open until {props.closeHour}:00. Come visit us or order online
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
 
 export default App;
