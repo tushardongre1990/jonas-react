@@ -7,6 +7,15 @@ const messages = [
 ];
 
 function App() {
+  return (
+    <div>
+      <Steps />
+      <Steps />
+    </div>
+  );
+}
+
+function Steps() {
   const [step, setStep] = useState(1);
   // const [test, setTest] = useState({ name: "Tushar" });
 
@@ -24,7 +33,7 @@ function App() {
     // setTest({ name: "Jason" });
   }
   return (
-    <>
+    <div>
       <button
         className="close"
         onClick={() => {
@@ -60,7 +69,7 @@ function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 export default App;
