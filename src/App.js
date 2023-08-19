@@ -1,75 +1,56 @@
-import { useState } from "react";
-
-const messages = [
-  "Learn React ⚛️",
-  "Apply for jobs 💼",
-  "Invest your new income 🤑",
+const initialItems = [
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+  { id: 2, description: "Socks", quantity: 12, packed: false },
 ];
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <Steps />
-      <Steps />
+    <div className="app">
+      <Logo />
+      <Form />
+      <PackingList />
+      <Stats />
     </div>
   );
 }
 
-function Steps() {
-  const [step, setStep] = useState(1);
-  // const [test, setTest] = useState({ name: "Tushar" });
-
-  const [isOpen, setIsOpen] = useState(true);
-  function handlePrevious() {
-    if (step > 1) setStep((s) => s - 1);
-  }
-  function handleNext() {
-    if (step < 3) {
-      setStep((s) => s + 1);
-      // setStep((s) => s + 1);
-    }
-    // Bad Practice
-    // test.name = "Jason";
-    // setTest({ name: "Jason" });
-  }
+function Logo() {
+  return <h1>🌴 Far Away 💼</h1>;
+}
+function Form() {
   return (
-    <div>
-      <button
-        className="close"
-        onClick={() => {
-          setIsOpen((is) => !is);
-        }}
-      >
-        &times;
-      </button>
-      {isOpen && (
-        <div className="steps">
-          <div className="numbers">
-            <div className={step >= 1 ? "active" : ""}>1</div>
-            <div className={step >= 2 ? "active" : ""}>2</div>
-            <div className={step >= 3 ? "active" : ""}>3</div>
-          </div>
-          <p className="message">
-            Step {step} : {messages[step - 1]}
-            {/* {test.name} */}
-          </p>
-          <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handleNext}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
+    <div className="add-form">
+      <h3>What do you need for your 😍 trip</h3>
     </div>
   );
 }
-export default App;
+// function PackingList() {
+//   return (
+//     <div className="list">
+//       <ul>
+//         {initialItems.map((item) => (
+//           <Item item={item} />
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+function PackingList() {
+  return <div className="list">List</div>;
+}
+
+// function Item({ item }) {
+//   return (
+//     <>
+//       <li>{item.description}</li>
+//     </>
+//   );
+// }
+function Stats() {
+  return (
+    <footer className="stats">
+      <em>💼 You have X items on your list, and you already packed X (%)</em>
+    </footer>
+  );
+}
