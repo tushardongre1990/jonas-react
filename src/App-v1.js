@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <Steps />
+      <Steps />
     </div>
   );
 }
@@ -41,7 +42,6 @@ function Steps() {
       >
         &times;
       </button>
-
       {isOpen && (
         <div className="steps">
           <div className="numbers">
@@ -54,40 +54,22 @@ function Steps() {
             {/* {test.name} */}
           </p>
           <div className="buttons">
-            <Button textColor="#fff" bgColor="#7950f2" onClick={handlePrevious}>
-              <span>👈</span>Previous
-            </Button>
-            <Button textColor="#fff" bgColor="#7950f2" onClick={handleNext}>
-              Next <span>👉</span>
-            </Button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              onClick={handlePrevious}
+            >
+              Previous
+            </button>
+            <button
+              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              onClick={handleNext}
+            >
+              Next
+            </button>
           </div>
         </div>
       )}
     </div>
   );
-
-  //   function Button({ textColor, bgColor, onClick, text, emoji }) {
-  //     return (
-  //       <button
-  //         style={{ backgroundColor: bgColor, color: textColor }}
-  //         onClick={onClick}
-  //       >
-  //         <span>{emoji}</span> {text}
-  //       </button>
-  //     );
-  //   }
-  // }
-
-  // value of children is whatever between the opening and closing tag of component
-  function Button({ textColor, bgColor, onClick, children }) {
-    return (
-      <button
-        style={{ backgroundColor: bgColor, color: textColor }}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    );
-  }
 }
 export default App;
